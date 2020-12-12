@@ -14,7 +14,7 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksis = new Transaksi;
+        $transaksis = Transaksi::has('pengunjung');
         if (request('query')) {
             $transaksis = $transaksis->where(function ($q) {
                 $q->orWhere('kode_transaksi', 'LIKE', '%' . request('query') . '%')
